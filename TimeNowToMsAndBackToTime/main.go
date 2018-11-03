@@ -6,20 +6,14 @@ import (
 )
 
 func main() {
-	now := time.Now().UTC()
-	fmt.Println(now)
+	now := time.Now()
+	fmt.Printf("UTC now is: %s\n", now.UTC())
 	nanoNow := time.Duration(now.UnixNano()) * time.Nanosecond
-	till := nanoNow / time.Millisecond
-	from := (nanoNow - 24*time.Hour) / time.Millisecond
+	msNow := nanoNow / time.Millisecond
 
-	fmt.Printf("From in Millisecond: %d\n", int64(from))
-	fmt.Printf("Till in Millisecond: %d\n", int64(till))
+	fmt.Printf("Now in Milliseconds: %d\n", int64(msNow))
 
-	d := till * time.Millisecond
+	d := msNow * time.Millisecond
 	t := time.Unix(int64(d/time.Second), int64(d%time.Second)).UTC()
-	fmt.Println(t)
-
-	d = from * time.Millisecond
-	t = time.Unix(int64(d/time.Second), int64(d%time.Second)).UTC()
-	fmt.Println(t)
+	fmt.Printf("Milliseconds back to %[1]T: %[1]s\n", t)
 }
