@@ -15,5 +15,5 @@ func main() {
 
 	d := msNow * time.Millisecond
 	t := time.Unix(int64(d/time.Second), int64(d%time.Second)).UTC()
-	fmt.Printf("Milliseconds back to %[1]T: %[1]s\n", t)
+	fmt.Printf("Milliseconds back to %T: %[1]s\n", t)
 }
